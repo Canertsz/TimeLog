@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -10,19 +12,19 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { PlusIcon } from "@radix-ui/react-icons"
 import { DatePicker } from "./ui/datePicker"
+import { PlusCircle } from "@phosphor-icons/react"
 
-export function NewLog() {
+function NewLog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <div
           className="flex items-center justify-center w-full sm:w-72 
           border-dashed border py-3 rounded-md cursor-pointer 
-          hover:border-zinc-400 transition-all"
+        border-zinc-400 transition-all"
         >
-          <PlusIcon width={20} height={20} />
+          <PlusCircle size={20} color="#a1a1aa" weight="regular" />
         </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
@@ -71,3 +73,5 @@ export function NewLog() {
     </Dialog>
   )
 }
+
+export default NewLog

@@ -2,7 +2,7 @@ import React from "react"
 import { Button } from "./ui/button"
 import { TimerIcon } from "@radix-ui/react-icons"
 
-export default function Navbar() {
+function Navbar() {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center">
@@ -16,3 +16,5 @@ export default function Navbar() {
     </div>
   )
 }
+
+export default Navbar
