@@ -4,7 +4,7 @@ import { TimerIcon } from "@radix-ui/react-icons"
 
 export default function Navbar() {
   return (
-    <div className="flex items-center justify-between p-5">
+    <div className="flex items-center justify-between">
       <div className="flex items-center">
         <TimerIcon width={30} height={30} />
         <div className="text-2xl justify-center">
