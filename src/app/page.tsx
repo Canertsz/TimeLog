@@ -2,6 +2,7 @@ import React from "react"
 import Navbar from "@/components/Navbar"
 import NewLog from "@/components/NewLog"
 import Calendar from "@/components/Calendar"
+import Logs from "@/components/Logs"
 
 export default function page() {
   return (
@@ -9,6 +10,7 @@ export default function page() {
       <Navbar />
       <NewLog />
       <Calendar />
+      <Logs />
     </div>
   )
 }

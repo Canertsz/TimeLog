@@ -7,6 +7,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@radix-ui/react-hover-card"
+import { cn } from "@/lib/utils"
 
 function Calendar() {
   const getDateInMonth = (year = dayjs().year(), month = dayjs().month()) => {
@@ -22,13 +23,32 @@ function Calendar() {
     return dates
   }
 
+  const getColor = (hour: number) => {
+    if (hour === 0) {
+      return "bg-gray-100"
+    } else if (hour < 5) {
+      return "bg-green-100"
+    } else if (hour < 10) {
+      return "bg-green-300"
+    } else {
+      return "bg-green-500"
+    }
+  }
+
+  const hour = 9
+
   return (
     <div className="flex flex-wrap justify-center border-[1px] border-solid gap-2 p-10 rounded-md">
       {getDateInMonth().map((date, index) => {
         return (
           <HoverCard key={index}>
             <HoverCardTrigger>
-              <div className="h-5 w-5 bg-gray-100 rounded-sm cursor-pointer"></div>
+              <div
+                className={cn(
+                  "h-5 w-5  rounded-sm cursor-pointer",
+                  getColor(hour || 0)
+                )}
+              ></div>
             </HoverCardTrigger>
             <HoverCardContent
               className="z-50 w-64 rounded-md border bg-popover p-4 text-popover-foreground 
@@ -37,7 +57,7 @@ function Calendar() {
               data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 
               data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2"
             >
-              0 hours on {date}
+              {hour || 0} hours on {date}
             </HoverCardContent>
           </HoverCard>
         )
