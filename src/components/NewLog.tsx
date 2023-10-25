@@ -14,8 +14,52 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { DatePicker } from "./ui/datePicker"
 import { PlusCircle } from "@phosphor-icons/react"
+import { useToast } from "./ui/use-toast"
+import useLogStore from "@/store"
+import { Toast } from "@radix-ui/react-toast"
+import dayjs from "dayjs"
 
 function NewLog() {
+  const log = useLogStore((state) => state.log)
+  const logs = useLogStore((state) => state.logs)
+  const setLog = useLogStore((state) => state.setLog)
+  const setLogs = useLogStore((state) => state.setLogs)
+
+  const { toast } = useToast()
+
+  const validateLog = () => {
+    if (!log.date || !log.note || log.hour === 0) {
+      throw "Hour or note cannot be empty"
+    } else if (log.hour >= 24) {
+      throw "Please enter a valid hour"
+    }
+  }
+
+  const submitLog = () => {
+    try {
+      validateLog()
+      setLogs(log, dayjs(log.date).format("DD-MM-YYYY"))
+      toast({
+        variant: "success",
+        title: "Log created successfully!",
+        description: `${log.hour} hour in ${log.date.toDateString()}`,
+      })
+      closeDialog()
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Failed to create log",
+        description: error as string,
+      })
+    }
+  }
+
+  // A little trick for closing modal when user clicks the save button.
+  // This needed because there is no built in action to make this happen.
+  const closeDialog = () => {
+    document.getElementById("close-btn")?.click()
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -52,6 +96,10 @@ function NewLog() {
               defaultValue="Pedro Duarte"
               className="col-span-3"
               placeholder="Amount of hour you spend"
+              value={log.hour}
+              onChange={(e) =>
+                setLog({ ...log, hour: parseInt(e.target.value) })
+              }
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
@@ -63,11 +111,15 @@ function NewLog() {
               defaultValue="@peduarte"
               className="col-span-3"
               placeholder="Note for the log"
+              value={log.note}
+              onChange={(e) => setLog({ ...log, note: e.target.value })}
             />
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Save</Button>
+          <Button type="submit" onClick={submitLog}>
+            Save
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

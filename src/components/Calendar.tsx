@@ -8,8 +8,11 @@ import {
   HoverCardTrigger,
 } from "@radix-ui/react-hover-card"
 import { cn } from "@/lib/utils"
+import useLogStore from "@/store"
 
 function Calendar() {
+  const { logs } = useLogStore()
+
   const getDateInMonth = (year = dayjs().year(), month = dayjs().month()) => {
     const startDate = dayjs().year(year).month(month).date(1)
     const endDate = startDate.endOf("month")
@@ -23,6 +26,7 @@ function Calendar() {
     return dates
   }
 
+  // TODO Bigger the coler range
   const getColor = (hour: number) => {
     if (hour === 0) {
       return "bg-gray-100"
@@ -40,13 +44,15 @@ function Calendar() {
   return (
     <div className="flex flex-wrap justify-center border-[1px] border-solid gap-2 p-10 rounded-md">
       {getDateInMonth().map((date, index) => {
+        const log = logs[date]
+
         return (
           <HoverCard key={index}>
             <HoverCardTrigger>
               <div
                 className={cn(
                   "h-5 w-5  rounded-sm cursor-pointer",
-                  getColor(hour || 0)
+                  getColor(log?.hour || 0)
                 )}
               ></div>
             </HoverCardTrigger>
@@ -57,7 +63,7 @@ function Calendar() {
               data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 
               data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2"
             >
-              {hour || 0} hours on {date}
+              {log?.hour || 0} hours on {date}
             </HoverCardContent>
           </HoverCard>
         )
