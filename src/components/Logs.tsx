@@ -30,11 +30,12 @@ function Logs() {
       <TableBody>
         {Object.keys(logs).map((key) => {
           const log = logs[key]
+          const date = log.date as Date
 
           return (
             <TableRow key={key}>
               <TableCell className="font-medium">
-                {log.date.toDateString()}
+                {date.toDateString()}
               </TableCell>
               <TableCell>{log.hour}</TableCell>
               <TableCell>{log.note}</TableCell>

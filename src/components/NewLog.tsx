@@ -16,8 +16,8 @@ import { DatePicker } from "./ui/datePicker"
 import { PlusCircle } from "@phosphor-icons/react"
 import { useToast } from "./ui/use-toast"
 import useLogStore from "@/store"
-import { Toast } from "@radix-ui/react-toast"
 import dayjs from "dayjs"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 
 function NewLog() {
   const log = useLogStore((state) => state.log)
@@ -26,6 +26,7 @@ function NewLog() {
   const setLogs = useLogStore((state) => state.setLogs)
 
   const { toast } = useToast()
+  const supabase = createClientComponentClient()
 
   const validateLog = () => {
     if (!log.date || !log.note || log.hour === 0) {
@@ -35,16 +36,32 @@ function NewLog() {
     }
   }
 
-  const submitLog = () => {
+  const submitLog = async () => {
     try {
       validateLog()
-      setLogs(log, dayjs(log.date).format("DD-MM-YYYY"))
-      toast({
-        variant: "success",
-        title: "Log created successfully!",
-        description: `${log.hour} hour in ${log.date.toDateString()}`,
-      })
-      closeDialog()
+
+      const date = log.date as Date
+
+      const { error } = await supabase
+        .from("Logs")
+        .upsert({ ...log, date: dayjs(date).format("DD-MM-YYYY") })
+        .select("*")
+        .single()
+      if (!error) {
+        setLogs(log, dayjs(date).format("DD-MM-YYYY"))
+        toast({
+          variant: "success",
+          title: "Log created successfully!",
+          description: `${log.hour} hour in ${date.toDateString()}`,
+        })
+        closeDialog()
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Failed to create log",
+          description: error.message,
+        })
+      }
     } catch (error) {
       toast({
         variant: "destructive",
