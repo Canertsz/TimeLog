@@ -9,8 +9,8 @@ import { redirect } from "next/navigation"
 import InıtLog from "@/components/state/InıtLog"
 import { Log } from "@/store"
 
+// TODO Dark mode
 // TODO Remove log feature
-// TODO Beautify the login page, add some screenshots of dashboard
 
 export default async function page() {
   const supabase = createServerComponentClient({ cookies })
@@ -25,8 +25,6 @@ export default async function page() {
     .from("Logs")
     .select("*")
     .order("date", { ascending: true })
-
-  console.log(logs)
 
   return (
     <div className="p-5 space-y-10">

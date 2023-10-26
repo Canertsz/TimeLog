@@ -1,7 +1,7 @@
 "use client"
 
 import useLogStore, { Log } from "@/store"
-import React, { useRef } from "react"
+import { useRef } from "react"
 
 function InıtLog({ logs }: { logs: Log[] }) {
   const initRef = useRef<boolean>()

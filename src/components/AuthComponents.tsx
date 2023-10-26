@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar"
 import React from "react"
 import { Button } from "@/components/ui/button"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { TimerIcon } from "lucide-react"
+import Image from "next/image"
 
 function AuthComponent() {
   const supabase = createClientComponentClient()
@@ -18,17 +20,27 @@ function AuthComponent() {
   }
 
   return (
-    <div className="p-5">
-      <Navbar />
-      <div className="flex justify-center items-center h-80vh">
-        <div className="text-center space-y-5">
-          <p className="max-w-md">
-            Remember, time is your most valuable asset - invest it wisely with
-            our TimeLog App!
-          </p>
-          <Button onClick={handleLogin}>Login with github</Button>
+    <div className="flex flex-col justify-center items-center text-center h-80vh space-y-10 mt-20">
+      <div className="flex items-center">
+        <TimerIcon width={30} height={30} />
+        <div className="text-2xl justify-center">
+          <span className="font-medium">Time</span>
+          <span className="font-bold">Log</span>
         </div>
       </div>
+      <p className="font-bold text-2xl max-w-xl">
+        Remember, time is your most valuable asset - invest it wisely with our
+        TimeLog App!
+      </p>
+      <Image
+        alt="TimeLog"
+        src="/TimeLog.png"
+        width={773}
+        height={420}
+        className="shadow-xl rounded-lg"
+        unoptimized={true}
+      />
+      <Button onClick={handleLogin}>Login with github</Button>
     </div>
   )
 }
