@@ -26,7 +26,6 @@ function Calendar() {
     return dates
   }
 
-  // TODO Bigger the coler range
   const getColor = (hour: number) => {
     if (hour === 0) {
       return "bg-gray-100"
@@ -42,7 +41,7 @@ function Calendar() {
   const hour = 9
 
   return (
-    <div className="flex flex-wrap justify-center border-[1px] border-solid gap-2 p-10 rounded-md">
+    <div className="flex flex-wrap justify-center border-[1px] border-solid gap-2 p-10 rounded-md dark:border-zinc-800">
       {getDateInMonth().map((date, index) => {
         const log = logs[date]
 

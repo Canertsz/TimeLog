@@ -7,10 +7,8 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import InıtLog from "@/components/state/InıtLog"
-import { Log } from "@/store"
-
-// TODO Dark mode
-// TODO Remove log feature
+import { ResultLog } from "@/store"
+import { Switch } from "@/components/ui/switch"
 
 export default async function page() {
   const supabase = createServerComponentClient({ cookies })
@@ -28,9 +26,12 @@ export default async function page() {
 
   return (
     <div className="p-5 space-y-10">
-      <InıtLog logs={logs as Log[]} />
+      <InıtLog logs={logs as ResultLog[]} />
       <Navbar />
-      <NewLog />
+      <div className="flex items-center justify-between">
+        <NewLog />
+        <Switch />
+      </div>
       <Calendar />
       <Logs />
     </div>

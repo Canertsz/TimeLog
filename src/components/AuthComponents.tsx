@@ -1,13 +1,15 @@
 "use client"
 
-import Navbar from "@/components/Navbar"
 import React from "react"
 import { Button } from "@/components/ui/button"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { TimerIcon } from "lucide-react"
 import Image from "next/image"
+import { useThemeStore } from "@/store"
 
 function AuthComponent() {
+  const { theme } = useThemeStore()
+
   const supabase = createClientComponentClient()
 
   const handleLogin = () => {
@@ -20,7 +22,7 @@ function AuthComponent() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center text-center h-80vh space-y-10 mt-20">
+    <div className="flex flex-col justify-center items-center text-center h-80vh space-y-10 mt-20 dark:text-white">
       <div className="flex items-center">
         <TimerIcon width={30} height={30} />
         <div className="text-2xl justify-center">
@@ -37,10 +39,15 @@ function AuthComponent() {
         src="/TimeLog.png"
         width={773}
         height={420}
-        className="shadow-xl rounded-lg"
+        className="shadow-xl rounded-lg dark:shadow-zinc-700 dark:shadow-4xl"
         unoptimized={true}
       />
-      <Button onClick={handleLogin}>Login with github</Button>
+      <Button
+        variant={theme === "dark" ? "secondary" : "default"}
+        onClick={handleLogin}
+      >
+        Login with github
+      </Button>
     </div>
   )
 }

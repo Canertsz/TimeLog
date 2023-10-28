@@ -83,7 +83,7 @@ function NewLog() {
         <div
           className="flex items-center justify-center w-full sm:w-72 
           border-dashed border py-3 rounded-md cursor-pointer 
-        border-zinc-400 transition-all"
+        border-zinc-400 transition-all dark:border-zinc-700"
         >
           <PlusCircle size={20} color="#a1a1aa" weight="regular" />
         </div>

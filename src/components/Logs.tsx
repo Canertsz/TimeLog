@@ -19,7 +19,9 @@ function Logs() {
 
   return (
     <Table>
-      <TableCaption>{isEmpty ? "No logs found" : "List of logs"}</TableCaption>
+      <TableCaption className="dark:text-white dark:text-opacity-60">
+        {isEmpty ? "No logs found" : "List of logs"}
+      </TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className="w-1/3">Date</TableHead>
@@ -27,15 +29,14 @@ function Logs() {
           <TableHead className="w-1/3">Note</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
+      <TableBody className="dark:text-white">
         {Object.keys(logs).map((key) => {
           const log = logs[key]
-          const date = log.date as Date
 
           return (
             <TableRow key={key}>
               <TableCell className="font-medium">
-                {date.toDateString()}
+                {log.date.toDateString()}
               </TableCell>
               <TableCell>{log.hour}</TableCell>
               <TableCell>{log.note}</TableCell>

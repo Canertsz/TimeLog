@@ -1,9 +1,9 @@
 "use client"
 
-import useLogStore, { Log } from "@/store"
+import useLogStore, { Log, ResultLog } from "@/store"
 import { useRef } from "react"
 
-function InıtLog({ logs }: { logs: Log[] }) {
+function InıtLog({ logs }: { logs: ResultLog[] }) {
   const initRef = useRef<boolean>()
 
   const prepareLog = () => {

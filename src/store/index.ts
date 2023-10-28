@@ -3,7 +3,13 @@ import { create } from "zustand"
 export type Log = {
   note: string
   hour: number
-  date: Date | string
+  date: Date
+}
+
+export type ResultLog = {
+  note: string
+  hour: number
+  date: string
 }
 
 interface LogState {
@@ -14,6 +20,11 @@ interface LogState {
   setDate: (date: Date) => void
   setLog: (log: Log) => void
   setLogs: (log: Log, key: string) => void
+}
+
+interface Theme {
+  theme: string
+  toggleTheme: () => void
 }
 
 const useLogStore = create<LogState>()((set) => ({
@@ -39,6 +50,16 @@ const useLogStore = create<LogState>()((set) => ({
       }
 
       return { logs: sortObject }
+    }),
+}))
+
+export const useThemeStore = create<Theme>((set) => ({
+  theme: localStorage.getItem("theme") || "light",
+  toggleTheme: () =>
+    set((state) => {
+      const newTheme = state.theme === "light" ? "dark" : "light"
+      localStorage.setItem("theme", newTheme)
+      return { theme: newTheme }
     }),
 }))
 
