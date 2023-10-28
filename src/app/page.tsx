@@ -10,6 +10,8 @@ import InıtLog from "@/components/state/InıtLog"
 import { ResultLog } from "@/store"
 import { Switch } from "@/components/ui/switch"
 
+export const dynamic = "force-dynamic"
+
 export default async function page() {
   const supabase = createServerComponentClient({ cookies })
 

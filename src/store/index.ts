@@ -53,14 +53,27 @@ const useLogStore = create<LogState>()((set) => ({
     }),
 }))
 
-export const useThemeStore = create<Theme>((set) => ({
-  theme: localStorage.getItem("theme") || "light",
-  toggleTheme: () =>
-    set((state) => {
-      const newTheme = state.theme === "light" ? "dark" : "light"
-      localStorage.setItem("theme", newTheme)
-      return { theme: newTheme }
-    }),
-}))
+export const useThemeStore = create<Theme>((set) => {
+  // Check if we're in a browser environment before accessing localStorage
+  const initialTheme =
+    typeof window !== "undefined"
+      ? localStorage.getItem("theme") || "light"
+      : "light"
+
+  return {
+    theme: initialTheme,
+    toggleTheme: () =>
+      set((state) => {
+        const newTheme = state.theme === "light" ? "dark" : "light"
+
+        // Check if we're in a browser environment before accessing localStorage
+        if (typeof window !== "undefined") {
+          localStorage.setItem("theme", newTheme)
+        }
+
+        return { theme: newTheme }
+      }),
+  }
+})
 
 export default useLogStore
