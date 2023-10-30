@@ -81,7 +81,7 @@ function NewLog() {
     <Dialog>
       <DialogTrigger asChild>
         <div
-          className="flex items-center justify-center w-full sm:w-72 
+          className="flex items-center justify-center w-full sm:w-72 sm: mr-4 
           border-dashed border py-3 rounded-md cursor-pointer 
         border-zinc-400 transition-all dark:border-zinc-700"
         >
@@ -130,6 +130,7 @@ function NewLog() {
               placeholder="Note for the log"
               value={log.note}
               onChange={(e) => setLog({ ...log, note: e.target.value })}
+              autoComplete="off"
             />
           </div>
         </div>
