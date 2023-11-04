@@ -3,6 +3,7 @@
 ![Untitled](https://github.com/Canertsz/TimeLog/assets/64376593/fc3704b3-100d-49a4-8474-a4d4877c07c7)
 
 ## ⏳ Don't Let the Past Slip Away! 🕰️
+
 Ever wondered what you were up to on November 4th? Let us help you rewind the clock and rediscover your day!
 
 ## ⚡️ Features
@@ -26,6 +27,7 @@ https://github.com/Canertsz/TimeLog/assets/64376593/369845e9-3b6d-4a76-a99c-065e
 ## 🧪 Tech Stack
 
 - <b>Next.js 13</b>
+- <b>NextAuth.js</b>
 - <b>TypeScript</b>
 - <b>Tailwind CSS</b>
 - <b>Radix UI</b>
