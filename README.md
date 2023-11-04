@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TimeLog
 
-## Getting Started
+![Untitled](https://github.com/Canertsz/TimeLog/assets/64376593/fc3704b3-100d-49a4-8474-a4d4877c07c7)
 
-First, run the development server:
+## ⏳ Don't Let the Past Slip Away! 🕰️
+Ever wondered what you were up to on November 4th? Let us help you rewind the clock and rediscover your day!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ⚡️ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Login with GitHub
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+https://github.com/Canertsz/TimeLog/assets/64376593/72b1918d-6e9b-4113-8e9e-634a04041ca6
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Dark Mode
 
-## Learn More
+https://github.com/Canertsz/TimeLog/assets/64376593/34e33e37-2fb7-4726-92c9-3782a5ee2274
 
-To learn more about Next.js, take a look at the following resources:
+### Create Log
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+https://github.com/Canertsz/TimeLog/assets/64376593/b320b7ff-2f5e-4a66-8f33-10f39921a1e6
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### GitHub-like Calendar
 
-## Deploy on Vercel
+https://github.com/Canertsz/TimeLog/assets/64376593/369845e9-3b6d-4a76-a99c-065efd940926
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧪 Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- <b>Next.js 13</b>
+- <b>TypeScript</b>
+- <b>Tailwind CSS</b>
+- <b>Radix UI</b>
+- <b>shadcn/ui</b>
+- <b>Supabase</b>
+- <b>Zustand</b>
+
+https://github.com/Canertsz/TimeLog/assets/64376593/19226965-0fc7-4649-bf86-d547d0160a62
+
+> <i>TimeLog is not a commercial endeavor; this readme file serves as a resource to showcase the project's full potential within my portfolio.</i>
